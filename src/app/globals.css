@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00aeef;
+  --color-secondary: #ffd700;
+}
+
+/* RESET GLOBAL UNTUK MENGHILANGKAN CELAH PUTIH */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fbfbfe; /* Pastikan background sampai ke akar */
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh; /* Gunakan sintaks CSS standar (dengan titik dua) */
+  display: flex;
+  flex-direction: column;
+}
+
+@layer components {
+  .responsive-container {
+    @apply w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20 flex-grow;
+  }
+
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border border-white/20 shadow-xl rounded-3xl;
+  }
+
+  /* Gunakan dvh (Dynamic Viewport Height) khusus untuk Mobile */
+  .app-layout {
+    @apply min-h-[100dvh] flex flex-col bg-[#FBFBFE] overflow-x-hidden w-full;
+  }
+}
+
+/* ... (Media print tetap sama) ... */
