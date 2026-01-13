@@ -246,104 +246,103 @@ export default function MusicApp() {
 
   return (
     <main className="w-full bg-slate-50 text-slate-900 font-sans min-h-screen">
-      {/* 1. SPLASH SCREEN (IOS & ANDROID OPTIMIZED) */}
+     {/* 1. SPLASH SCREEN (ADAPTIVE DESKTOP & MOBILE) */}
 {step === "splash" && (
-  <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#00AEEF] via-[#0088cc] to-[#00AEEF] p-6 text-white text-center overflow-hidden touch-none">
-    {/* Latar Belakang Animasi (Partikel Musik) */}
-    <div className="absolute inset-0 pointer-events-none">
-      <span className="material-icons absolute top-[15%] left-[10%] text-white/20 text-[100px] md:text-[180px] -rotate-12 animate-pulse">
+  <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#00AEEF] via-[#0088cc] to-[#00AEEF] text-white text-center overflow-hidden">
+    
+    {/* Latar Belakang Animasi (Disesuaikan agar tidak 'berantakan' di layar lebar) */}
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <span className="material-icons absolute top-[10%] left-[5%] md:left-[15%] text-white/20 text-[100px] md:text-[150px] -rotate-12 animate-pulse">
         music_note
       </span>
-      <span className="material-icons absolute bottom-[5%] right-[-5%] text-white/10 text-[150px] md:text-[250px] rotate-45 animate-bounce">
+      <span className="material-icons absolute bottom-[5%] right-[-5%] md:right-[5%] text-white/10 text-[150px] md:text-[200px] rotate-45 animate-bounce">
         album
       </span>
-      <span className="material-icons absolute top-1/2 right-[5%] text-white/10 text-[80px] md:text-[120px] animate-pulse">
+      <span className="material-icons absolute top-1/2 right-[5%] md:right-[10%] text-white/10 text-[80px] md:text-[100px] animate-pulse">
         piano
       </span>
     </div>
 
-    {/* Konten Utama */}
-    <div className="relative z-10 flex flex-col items-center animate-in fade-in zoom-in duration-1000 w-full max-w-lg">
+    {/* Konten Utama - Menggunakan Max-Width agar tidak melebar di Desktop */}
+    <div className="relative z-10 flex flex-col items-center animate-in fade-in zoom-in duration-1000 w-full max-w-[90%] md:max-w-2xl px-4">
+      
       {/* Logo Wrapper */}
-      <div className="relative mb-6 md:mb-10 group">
-        <div className="absolute inset-0 bg-yellow-400 blur-[30px] md:blur-[50px] opacity-40 rounded-full animate-pulse"></div>
-        <div className="relative p-1 rounded-full bg-gradient-to-b from-white/60 to-white/20 border border-white/50 shadow-2xl transform active:scale-95 transition-transform duration-500">
-          <div className="relative w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-full overflow-hidden border-2 md:border-4 border-white shadow-inner bg-white">
+      <div className="relative mb-6 md:mb-8 group">
+        <div className="absolute inset-0 bg-yellow-400 blur-[30px] md:blur-[40px] opacity-40 rounded-full animate-pulse"></div>
+        <div className="relative p-1 rounded-full bg-gradient-to-b from-white/60 to-white/20 border border-white/50 shadow-2xl transform transition-transform duration-500 hover:scale-105">
+          <div className="relative w-[110px] h-[110px] md:w-[140px] md:h-[140px] rounded-full overflow-hidden border-2 md:border-4 border-white bg-white">
             <img
               src="https://i.pinimg.com/736x/c0/28/34/c02834a1463d2e75c6ca82369ab15fa9.jpg"
               alt="Logo Dasar Seni Musik"
-              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
           </div>
-
-          <div className="absolute -bottom-1 -right-1 bg-yellow-400 text-blue-900 w-8 h-8 md:w-12 md:h-12 rounded-full shadow-xl flex items-center justify-center border-2 md:border-4 border-[#00AEEF] z-20 animate-bounce">
-            <span className="material-icons text-lg md:text-2xl font-black">
-              music_note
-            </span>
+          {/* Badge Not Balok */}
+          <div className="absolute -bottom-1 -right-1 bg-yellow-400 text-blue-900 w-9 h-9 md:w-11 md:h-11 rounded-full shadow-xl flex items-center justify-center border-2 md:border-4 border-[#00AEEF] z-20 animate-bounce">
+            <span className="material-icons text-lg md:text-xl font-black">music_note</span>
           </div>
         </div>
       </div>
 
-      {/* Judul & Deskripsi */}
-      <div className="space-y-3 md:space-y-4 mb-10 md:mb-14 px-2">
-        <h1 className="text-4xl md:text-8xl font-black tracking-tighter drop-shadow-2xl leading-[0.9]">
+      {/* Judul & Deskripsi - Skala Font Diperbaiki */}
+      <div className="space-y-3 md:space-y-4 mb-10 md:mb-12">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter drop-shadow-2xl leading-[0.9]">
           DASAR SENI <br />
           <span className="text-yellow-400 inline-block mt-1 md:mt-2">MUSIK</span>
         </h1>
-        <p className="text-base md:text-2xl text-blue-50 font-medium max-w-[280px] md:max-w-lg mx-auto opacity-90 italic leading-tight">
+        <p className="text-base md:text-xl lg:text-2xl text-blue-50 font-medium max-w-[280px] md:max-w-md mx-auto opacity-90 italic leading-tight">
           "Harmoni dalam genggaman, kreativitas tanpa batas."
         </p>
       </div>
 
-      {/* Tombol Aksi (DENGAN FIX AUDIO IOS) */}
-      <div className="flex flex-col gap-4 md:gap-6 w-full px-4">
+      {/* Tombol Aksi - Lebar terkendali di Desktop */}
+      <div className="flex flex-col gap-4 md:gap-5 w-full max-w-[320px] md:max-w-[400px]">
         <button
           onClick={() => {
-            // --- FIX AUDIO UNLOCKER UNTUK IPHONE ---
+            // FIX AUDIO IPHONE & ANDROID
             const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
             const audioCtx = new AudioContext();
-            if (audioCtx.state === 'suspended') {
-              audioCtx.resume();
-            }
-            // Memicu suara kosong pelan agar sistem audio mobile terbuka
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            gainNode.gain.value = 0;
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.start(0);
-            oscillator.stop(0.001);
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            gain.gain.value = 0;
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(0);
+            osc.stop(0.001);
 
             setStep("menu");
           }}
-          className="group relative overflow-hidden bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-blue-900 py-4 md:py-6 px-6 md:px-10 rounded-2xl md:rounded-3xl text-xl md:text-3xl font-black shadow-[0_6px_0_0_#caac00] active:shadow-none active:translate-y-[6px] transition-all flex items-center justify-center gap-3 md:gap-4"
+          className="group relative overflow-hidden bg-yellow-400 hover:bg-yellow-300 text-blue-900 py-4 md:py-5 px-6 rounded-2xl md:rounded-[24px] text-xl md:text-2xl font-black shadow-[0_6px_0_0_#caac00] active:shadow-none active:translate-y-[6px] transition-all flex items-center justify-center gap-3"
         >
           MULAI BELAJAR
-          <span className="material-icons text-2xl md:text-4xl group-hover:translate-x-2 transition-transform duration-300">
+          <span className="material-icons text-2xl md:text-3xl group-hover:translate-x-2 transition-transform">
             play_circle_filled
           </span>
         </button>
 
-        <div className="flex gap-3 md:gap-4">
+        <div className="flex gap-3">
           <button
             onClick={() => setActiveModal("tentang")}
-            className="flex-1 bg-blue-900/40 active:bg-blue-900/60 backdrop-blur-md border border-white/20 p-4 md:p-5 rounded-2xl md:rounded-3xl font-bold text-sm md:text-lg transition-all flex items-center justify-center gap-2 active:scale-95 text-white"
+            className="flex-1 bg-blue-900/40 hover:bg-blue-900/60 backdrop-blur-md border border-white/20 p-3 md:p-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 active:scale-95 text-white"
           >
-            <span className="material-icons text-lg md:text-xl">info_outline</span> Tentang
+            <span className="material-icons text-base">info_outline</span> Tentang
           </button>
           <button
             onClick={() => setActiveModal("bantuan")}
-            className="flex-1 bg-blue-900/40 active:bg-blue-900/60 backdrop-blur-md border border-white/20 p-4 md:p-5 rounded-2xl md:rounded-3xl font-bold text-sm md:text-lg transition-all flex items-center justify-center gap-2 active:scale-95 text-white"
+            className="flex-1 bg-blue-900/40 hover:bg-blue-900/60 backdrop-blur-md border border-white/20 p-3 md:p-4 rounded-2xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 active:scale-95 text-white"
           >
-            <span className="material-icons text-lg md:text-xl">help_outline</span> Bantuan
+            <span className="material-icons text-base">help_outline</span> Bantuan
           </button>
         </div>
       </div>
     </div>
 
-    <div className="absolute bottom-6 opacity-30 text-[8px] md:text-[12px] tracking-[4px] md:tracking-[6px] font-bold uppercase shrink-0">
-      Digital Music
+    {/* Footer Digital Music */}
+    <div className="absolute bottom-6 opacity-30 text-[9px] md:text-[11px] tracking-[4px] md:tracking-[8px] font-bold uppercase">
+      Digital Music Education
     </div>
   </div>
 )}
